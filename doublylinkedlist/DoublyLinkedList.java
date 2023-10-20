@@ -22,6 +22,14 @@ public class DoublyLinkedList {
         length = 1;
     }
 
+    public void print() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.println(temp.value);
+            temp = temp.next;
+        }
+    }
+
     public void append(int value) {
         Node newNode = new Node(value);
         if (length == 0) {
@@ -110,14 +118,6 @@ public class DoublyLinkedList {
         return false;
     }
 
-    public void printList() {
-        // Node temp = head;
-        // while (temp != null) {
-        // System.out.println(temp.value);
-        // temp = temp.next;
-        // }
-    }
-
     public boolean insert(int index, int value) {
         if (index < 0 || index > length) {
             return false;
@@ -169,20 +169,4 @@ public class DoublyLinkedList {
 
         return temp;
     }
-
-    public void reverse() {
-        // Node temp = head;
-        // head = tail;
-        // tail = temp;
-        // Node after = temp.next;
-        // Node before = null;
-
-        // for (int i = 0; i < length; i++) {
-        // after = temp.next;
-        // temp.next = before;
-        // before = temp;
-        // temp = after;
-        // }
-    }
-
 }

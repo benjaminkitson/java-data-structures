@@ -14,6 +14,21 @@ public class Queue {
         }
     }
 
+    public Queue(int value) {
+        Node newNode = new Node(value);
+        first = newNode;
+        last = newNode;
+        length = 1;
+    }
+
+    public void print() {
+        Node temp = first;
+        while (temp != null) {
+            System.out.println(temp.value);
+            temp = temp.next;
+        }
+    }
+
     public void enqueue(int value) {
         Node newNode = new Node(value);
         if (length == 0) {
@@ -22,6 +37,7 @@ public class Queue {
             last.next = newNode;
         }
         last = newNode;
+        length++;
     }
 
     public Node dequeue() {
@@ -36,21 +52,8 @@ public class Queue {
             first = first.next;
             temp.next = null;
         }
+        length--;
         return temp;
     }
 
-    public Queue(int value) {
-        Node newNode = new Node(value);
-        first = newNode;
-        last = newNode;
-        length = 1;
-    }
-
-    // public void printList() {
-    // Node temp = top;
-    // while (temp != null) {
-    // System.out.println(temp.value);
-    // temp = temp.next;
-    // }
-    // }
 }

@@ -14,7 +14,7 @@ public class LinkedList {
         }
     }
 
-    public void printList() {
+    public void print() {
         Node temp = head;
         while (temp != null) {
             System.out.println(temp.value);
