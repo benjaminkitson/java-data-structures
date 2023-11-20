@@ -39,7 +39,7 @@ public class Stack {
         height = 1;
     }
 
-    public void printList() {
+    public void printStack() {
         Node temp = top;
         while (temp != null) {
             System.out.println(temp.value);

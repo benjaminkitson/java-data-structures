@@ -10,7 +10,7 @@ public class Main {
 
         myDoublyLinkedList.insert(3, 2);
 
-        myDoublyLinkedList.remove(3);
+        myDoublyLinkedList.remove(2);
 
         myDoublyLinkedList.print();
     }

@@ -76,4 +76,70 @@ public class BinarySearchTree {
         }
         return false;
     }
+
+    private boolean rContains(Node currentNode, int value) {
+        if (currentNode.value == value)
+            return true;
+        if (value < currentNode.value) {
+            return rContains(currentNode.left, value);
+        }
+        if (value > currentNode.value) {
+            return rContains(currentNode.right, value);
+        }
+        return false;
+    }
+
+    public boolean rContains(int value) {
+        return rContains(root, value);
+    }
+
+    private Node rInsert(Node currentNode, int value) {
+        if (currentNode == null)
+            return new Node(value);
+        if (value < currentNode.value) {
+            currentNode.left = rInsert(currentNode.left, value);
+        }
+        if (value > currentNode.value) {
+            currentNode.left = rInsert(currentNode.right, value);
+        }
+        return currentNode;
+    }
+
+    public void rInsert(int value) {
+        if (root == null)
+            root = new Node(value);
+        rInsert(root, value);
+    }
+
+    private Node rDeleteNode(Node currentNode, int value) {
+        if (currentNode == null)
+            return null;
+        if (value < currentNode.value) {
+            currentNode.left = rDeleteNode(currentNode.left, value);
+        } else if (value > currentNode.value) {
+            currentNode.right = rDeleteNode(currentNode.right, value);
+        } else {
+            if (currentNode.left == null && currentNode.right == null) {
+                return null;
+            }
+            if (currentNode.left == null) {
+                currentNode = currentNode.right;
+            }
+            if (currentNode.right == null) {
+                currentNode = currentNode.left;
+            }
+            int subTreeMin = minValue(currentNode.right);
+            currentNode.value = subTreeMin;
+            currentNode.right = rDeleteNode(currentNode.right, subTreeMin);
+        }
+        return currentNode;
+    }
+
+    private int minValue(Node currentNode) {
+        while (currentNode.left != null) {
+            currentNode = currentNode.left;
+        }
+        return currentNode.value;
+    }
+
 }
